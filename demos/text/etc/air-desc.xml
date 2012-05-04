@@ -4,7 +4,7 @@
     <versionNumber>1.0.0</versionNumber>
     <filename>Text Demo</filename>
     <initialWindow>
-      <content>app-air.swf</content>
+      <content>main-air.swf</content>
       <renderMode>direct</renderMode>
     </initialWindow>
 </application>
