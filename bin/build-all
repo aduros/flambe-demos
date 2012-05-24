@@ -2,11 +2,13 @@
 #
 # Builds all the demos
 
+set -e
+
 PROJECT_ROOT=`readlink -f $(dirname $0)/..`
 cd $PROJECT_ROOT;
 
 for dir in demos/* template; do
     pushd $dir
-    waf distclean configure install --debug --no-android --no-ios || exit
+    waf distclean configure install --debug --no-android --no-ios
     popd
 done
