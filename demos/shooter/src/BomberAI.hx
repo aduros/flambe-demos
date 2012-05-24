@@ -12,10 +12,10 @@ class BomberAI extends Component
     {
     }
 
-    override public function onUpdate (dt)
+    override public function onUpdate (dt :Float)
     {
         var sprite = owner.get(Sprite);
-        sprite.y._ += dt*0.05;
+        sprite.y._ += dt*50;
         if (sprite.y._ > System.stage.height) {
             owner.dispose();
         }

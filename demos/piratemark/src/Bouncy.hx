@@ -12,18 +12,19 @@ class Bouncy extends Component
         _vy = Math.random()*70 - 35;
     }
 
-    override public function onUpdate (dt :Int)
+    override public function onUpdate (dt :Float)
     {
         var sprite = owner.get(Sprite);
         var w = System.stage.width;
         var h = System.stage.height;
 
         // Clamp to prevent warping when unpausing
-        if (dt > 100) {
-            dt = 100;
+        // TODO(bruno): Flambe should handle this, see issue #15
+        if (dt > 0.1) {
+            dt = 0.1;
         }
 
-        var perSecond = 0.05*dt;
+        var perSecond = 1000*0.05*dt;
         sprite.x._ += _vx*perSecond;
         sprite.y._ += _vy*perSecond;
         sprite.rotation._ += _vr*perSecond;

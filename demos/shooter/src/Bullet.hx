@@ -3,7 +3,6 @@
 // https://github.com/aduros/flambe/blob/master/LICENSE.txt
 
 import flambe.Component;
-import flambe.display.AnimatedSprite;
 import flambe.display.Sprite;
 import flambe.Entity;
 import flambe.script.CallFunction;
@@ -16,10 +15,10 @@ class Bullet extends Component
 {
     public function new () { }
 
-    override public function onUpdate (dt)
+    override public function onUpdate (dt :Float)
     {
         var sprite = owner.get(Sprite);
-        sprite.y._ -= dt*0.5;
+        sprite.y._ -= dt*500;
         if (sprite.x._ < 0 || sprite.x._ > System.stage.width ||
             sprite.y._ < 0 || sprite.y._ > System.stage.height) {
             owner.dispose();

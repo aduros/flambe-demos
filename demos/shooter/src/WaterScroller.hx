@@ -2,20 +2,20 @@
 // Flambe - Rapid game development
 // https://github.com/aduros/flambe/blob/master/LICENSE.txt
 
-import flambe.animation.Property;
+import flambe.animation.AnimatedFloat;
 import flambe.Component;
 import flambe.display.Sprite;
 
 class WaterScroller extends Component
 {
-    public var speed :PFloat;
+    public var speed :AnimatedFloat;
 
-    public function new (speed)
+    public function new (speed :Float)
     {
-        this.speed = new PFloat(speed);
+        this.speed = new AnimatedFloat(speed);
     }
 
-    override public function onUpdate (dt)
+    override public function onUpdate (dt :Float)
     {
         speed.update(dt);
 

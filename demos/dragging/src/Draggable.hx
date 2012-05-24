@@ -23,7 +23,7 @@ class Draggable extends Component
         _offset = new Point(event.viewX - sprite.x._, event.viewY - sprite.y._);
     }
 
-    override public function onUpdate (dt :Int)
+    override public function onUpdate (dt :Float)
     {
         if (_dragging) {
             if (System.pointer.isDown()) {

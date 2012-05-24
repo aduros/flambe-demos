@@ -33,7 +33,7 @@ class Game extends Component
     {
         var water = new Entity()
             .add(new PatternSprite(ShooterCtx.pack.loadTexture("water.png")))
-            .add(new WaterScroller(0.1/4));
+            .add(new WaterScroller(25));
         var sprite = water.get(PatternSprite);
         sprite.width._ = System.stage.width;
         sprite.height._ = System.stage.height+32;
