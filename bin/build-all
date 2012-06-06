@@ -9,6 +9,6 @@ cd $PROJECT_ROOT;
 
 for dir in demos/* template; do
     pushd $dir
-    waf distclean configure install --debug --no-android --no-ios
+    flambe-waf distclean configure install --debug --no-android --no-ios
     popd
 done
