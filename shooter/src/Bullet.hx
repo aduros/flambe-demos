@@ -27,6 +27,9 @@ class Bullet extends Component
 
         for (enemy in Game.enemies) {
             var enemySprite = enemy.get(Sprite);
+            if (enemySprite == null) {
+                continue;
+            }
             var dx = sprite.x._ - enemySprite.x._;
             var dy = sprite.y._ - enemySprite.y._;
 
