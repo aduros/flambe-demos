@@ -21,5 +21,4 @@ def build(ctx):
     # Kick off a build with the desired platforms
     ctx(features="flambe",
         platforms=platforms,
-        air_password="samplePassword",
-        main="Piratemark")
+        air_password="samplePassword")

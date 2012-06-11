@@ -1,12 +1,11 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <project version="2">
-  <!-- Output SWF options -->
+  <!--
+      NOTE: Flambe doesn't use these Flash options. Edit your wscript and
+      web/index.html to change how your game is built and embedded.
+  -->
   <output>
     <movie outputType="CustomBuild" />
-    <!--
-        NOTE: Flambe doesn't use these Flash options. Edit your wscript and
-        web/index.html to change how your game is built and embedded.
-    -->
     <movie input="" />
     <movie path="" />
     <movie fps="30" />
@@ -45,7 +44,7 @@
     <hidden path="build" />
   </hiddenPaths>
   <!-- Executed before build -->
-  <preBuildCommand>cmd /c flambe-waf --flashdevelop=$(BuildConfig) configure install</preBuildCommand>
+  <preBuildCommand>cmd /c flambe-waf --flashdevelop=$(BuildConfig) -j1 configure install 2&gt;&amp;1</preBuildCommand>
   <!-- Executed after build -->
   <postBuildCommand alwaysRun="False" />
   <!-- Other project options -->
