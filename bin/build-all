@@ -7,11 +7,12 @@ set -e
 PROJECT_ROOT=`readlink -f $(dirname $0)/..`
 cd $PROJECT_ROOT;
 
-for dir in *; do
-    if [ ! -f "$dir/wscript" ]; then
+for demo in *; do
+    if [ ! -f "$demo/wscript" ]; then
         continue
     fi
-    pushd $dir
-    flambe-waf distclean configure install --debug --no-android --no-ios
+    pushd $demo
+    rm -rf deploy
+    flambe-waf distclean configure install $*
     popd
 done

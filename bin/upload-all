@@ -1,0 +1,19 @@
+#!/bin/bash
+#
+# Builds and uploads release versions of all the demos
+
+set -e
+
+PROJECT_ROOT=`readlink -f $(dirname $0)/..`
+cd $PROJECT_ROOT;
+
+bin/build-all
+
+for demo in *; do
+    if [ ! -d "$demo/deploy" ]; then
+        continue
+    fi
+    pushd $demo
+    rsync -avz --delete deploy/web/ catdap:web/flambe/demos/$demo
+    popd
+done
