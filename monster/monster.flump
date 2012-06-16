@@ -1,0 +1,12 @@
+{
+  "exports": [
+    {
+      "scale": 1,
+      "format": "JSON",
+      "name": "bootstrap",
+      "description": "bootstrap (1.00/JSON)"
+    }
+  ],
+  "exportDir": "assets",
+  "importDir": "flash"
+}
