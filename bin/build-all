@@ -13,6 +13,6 @@ for demo in *; do
     fi
     pushd $demo
     rm -rf deploy
-    flambe-waf distclean configure install $*
+    wafl distclean configure install $*
     popd
 done
