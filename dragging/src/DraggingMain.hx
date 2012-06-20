@@ -15,11 +15,6 @@ class DraggingMain
     {
         System.init();
 
-        trace("Update");
-        System.hidden.changed.connect(function (hidden, wasHidden) {
-            trace("Hidden is now " + hidden);
-        });
-
         var loader = System.loadAssetPack(Manifest.build("bootstrap"));
         // Add listeners
         loader.success.connect(onSuccess);
