@@ -5,6 +5,7 @@
 import flambe.Component;
 import flambe.display.Sprite;
 import flambe.Entity;
+import flambe.input.MouseCursor;
 import flambe.input.PointerEvent;
 import flambe.math.Point;
 import flambe.System;
@@ -18,9 +19,11 @@ class Draggable extends Component
 
     private function onPointerDown (event :PointerEvent)
     {
-        _dragging = true;
         var sprite = owner.get(Sprite);
         _offset = new Point(event.viewX - sprite.x._, event.viewY - sprite.y._);
+
+        _dragging = true;
+        System.mouse.cursor = Button;
     }
 
     override public function onUpdate (dt :Float)
@@ -31,6 +34,7 @@ class Draggable extends Component
                 sprite.setXY(System.pointer.x - _offset.x, System.pointer.y - _offset.y);
             } else {
                 _dragging = false;
+                System.mouse.cursor = Default;
             }
         }
     }
