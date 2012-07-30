@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <application xmlns="http://ns.adobe.com/air/application/3.2">
-    <id>com.yourdomain.physics</id>
+    <id>flambe.physics</id>
     <versionNumber>1.0.0</versionNumber>
-    <filename>Physics</filename>
+    <filename>Physics Demo</filename>
     <initialWindow>
       <content>main-air.swf</content>
       <renderMode>direct</renderMode>

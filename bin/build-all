@@ -13,6 +13,6 @@ for demo in *; do
     fi
     pushd $demo
     rm -rf deploy
-    wafl distclean configure install $*
+    wafl -v distclean configure install "$@"
     popd
 done

@@ -7,7 +7,7 @@ set -e
 PROJECT_ROOT=`readlink -f $(dirname $0)/..`
 cd $PROJECT_ROOT;
 
-bin/build-all
+source bin/build-all
 
 for demo in *; do
     if [ ! -d "$demo/deploy" ]; then
@@ -15,5 +15,6 @@ for demo in *; do
     fi
     pushd $demo
     rsync -avz --delete deploy/web/ catdap:web/flambe/demos/$demo
+    scp deploy/packages/*.apk catdap:web/flambe/demos/$demo
     popd
 done
