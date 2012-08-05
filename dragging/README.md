@@ -1,7 +1,7 @@
 # Dragging demo
 
 This demonstrates basic sprite picking. Tap and drag sprites to move
-them around.
+them around. Scroll the mouse wheel or pinch to zoom.
 
 Try it out in [Flash], [HTML5] or [Android].
 
