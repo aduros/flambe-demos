@@ -2,7 +2,7 @@
 // Flambe - Rapid game development
 // https://github.com/aduros/flambe/blob/master/LICENSE.txt
 
-import flambe.animation.Easing;
+import flambe.animation.Ease;
 import flambe.asset.AssetPack;
 import flambe.asset.Manifest;
 import flambe.display.FillSprite;
@@ -33,10 +33,10 @@ class TextMain
         sprite.pointerDown.connect(function (_) {
             var margin = 50;
             sprite.x.animateTo(
-                margin + (System.stage.width - 2*margin)*Math.random(), 1, Easing.linear);
+                margin + (System.stage.width - 2*margin)*Math.random(), 1, Ease.linear);
             sprite.y.animateTo(
-                margin + (System.stage.height - 2*margin)*Math.random(), 1, Easing.linear);
-            sprite.rotation.animateTo(360*Math.random(), 1, Easing.quadOut);
+                margin + (System.stage.height - 2*margin)*Math.random(), 1, Ease.linear);
+            sprite.rotation.animateTo(360*Math.random(), 1, Ease.quadOut);
             sprite.text = messages[taps++ % messages.length];
         });
 

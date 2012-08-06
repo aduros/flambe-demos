@@ -2,7 +2,7 @@
 // Flambe - Rapid game development
 // https://github.com/aduros/flambe/blob/master/LICENSE.txt
 
-import flambe.animation.Easing;
+import flambe.animation.Ease;
 import flambe.Component;
 import flambe.debug.FpsDisplay;
 import flambe.display.Font;
@@ -52,7 +52,7 @@ class Game extends Component
                 sprite.alpha._ = 0.8;
                 cloudLayer.get(Script).run(new Sequence([
                     new AnimateTo(sprite.y, System.stage.height,
-                        3*(8+2*Math.random()), Easing.linear),
+                        3*(8+2*Math.random()), Ease.linear),
                     new CallFunction(cloud.dispose)
                 ]));
                 cloudLayer.addChild(cloud);

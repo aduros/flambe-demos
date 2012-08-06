@@ -1,4 +1,4 @@
-import flambe.animation.Easing;
+import flambe.animation.Ease;
 import flambe.asset.AssetPack;
 import flambe.asset.Manifest;
 import flambe.display.FillSprite;
@@ -68,7 +68,7 @@ class BrowserMain
         if (System.web.supported) {
             var view = System.web.createView(0, 0, System.stage.width, 0);
             view.url._ = "http://en.wikipedia.org/wiki/Main_Page";
-            view.height.animateTo(location.y._ - 10, 3, Easing.bounceOut);
+            view.height.animateTo(location.y._ - 10, 3, Ease.bounceOut);
 
             view.error.connect(function (error) location.text = "Error: " + error);
             view.url.watch(function (url,_) location.text = url);
