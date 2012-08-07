@@ -15,10 +15,11 @@ class TextMain
 {
     public static function onSuccess (pack :AssetPack)
     {
-        var bg = new Entity().add(new FillSprite(0xffffff, System.stage.width, System.stage.height));
-        System.root.addChild(bg);
+        var background = new Entity()
+            .add(new FillSprite(0x606060, System.stage.width, System.stage.height));
+        System.root.addChild(background);
 
-        var font = new Font(pack, "myfont");
+        var font = new Font(pack, "handel");
         var label = new Entity()
             .add(new TextSprite(font, "Go ahead, tap me"));
 
