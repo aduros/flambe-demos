@@ -18,12 +18,6 @@ class Bouncy extends Component
         var w = System.stage.width;
         var h = System.stage.height;
 
-        // Clamp to prevent warping when unpausing
-        // TODO(bruno): Flambe should handle this, see issue #15
-        if (dt > 0.1) {
-            dt = 0.1;
-        }
-
         var perSecond = 1000*0.05*dt;
         sprite.x._ += _vx*perSecond;
         sprite.y._ += _vy*perSecond;
