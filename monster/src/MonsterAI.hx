@@ -2,24 +2,14 @@ import flambe.asset.AssetPack;
 import flambe.Component;
 import flambe.display.Sprite;
 import flambe.math.FMath;
-import flambe.swf.Library;
-import flambe.swf.MovieSprite;
+import flambe.swf.MoviePlayer;
 import flambe.Entity;
 import flambe.System;
 
 class MonsterAI extends Component
 {
-    public function new (pack :AssetPack)
+    public function new ()
     {
-        var lib = new Library(pack, "monster");
-        _idle = lib.createMovie("idle");
-        _walk = lib.createMovie("walk");
-    }
-
-    override public function onAdded ()
-    {
-        owner.addChild(_body = new Entity());
-        play(_idle);
     }
 
     override public function onUpdate (dt :Float)
@@ -58,21 +48,8 @@ class MonsterAI extends Component
             walking = true;
         }
 
-        play(walking ? _walk : _idle);
-    }
-
-    private function play (movie :MovieSprite)
-    {
-        var current = _body.get(MovieSprite);
-        if (current != movie) {
-            _body.add(movie);
-        }
+        owner.get(MoviePlayer).loop(walking ? "walk" : "idle", false);
     }
 
     private static inline var SPEED = 100; // pixels per second -ish
-
-    private var _body :Entity;
-
-    private var _idle :MovieSprite;
-    private var _walk :MovieSprite;
 }

@@ -1,10 +1,12 @@
+import flambe.Entity;
+import flambe.System;
 import flambe.asset.AssetPack;
 import flambe.asset.Manifest;
 import flambe.display.FillSprite;
 import flambe.display.ImageSprite;
 import flambe.display.Sprite;
-import flambe.Entity;
-import flambe.System;
+import flambe.swf.Library;
+import flambe.swf.MoviePlayer;
 
 class MonsterMain
 {
@@ -14,8 +16,9 @@ class MonsterMain
             .add(new FillSprite(0xf0f0f0, System.stage.width, System.stage.height)));
 
         var monster = new Entity()
-            .add(new MonsterAI(pack))
-            .add(new Sprite().setXY(System.stage.width, System.stage.height));
+            .add(new MoviePlayer(new Library(pack, "monster")))
+            .add(new Sprite().setXY(System.stage.width, System.stage.height))
+            .add(new MonsterAI());
         System.root.addChild(monster);
 
         var cursor = new Entity()
