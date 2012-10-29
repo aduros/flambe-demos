@@ -8,5 +8,6 @@
       "description": "bootstrap (1.00/JSON)"
     }
   ],
+  "maxSize": 1024,
   "importDir": "flash"
 }
