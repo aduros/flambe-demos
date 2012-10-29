@@ -16,17 +16,21 @@ class MonsterMain
             .add(new FillSprite(0xf0f0f0, System.stage.width, System.stage.height)));
 
         var monster = new Entity()
-            .add(new MoviePlayer(new Library(pack, "monster")))
+            .add(new MoviePlayer(new Library(pack, "monster")).loop("idle"))
             .add(new Sprite().setXY(System.stage.width, System.stage.height))
             .add(new MonsterAI());
         System.root.addChild(monster);
 
-        var cursor = new Entity()
-            .add(new ImageSprite(pack.loadTexture("cupcake.png")).centerAnchor());
-        System.pointer.move.connect(function (event) {
-            cursor.get(Sprite).setXY(event.viewX, event.viewY);
+        monster.get(Sprite).pointerDown.connect(function (event) {
+            monster.get(MoviePlayer).play("attack");
         });
-        System.root.addChild(cursor);
+
+        var cupcake = new ImageSprite(pack.loadTexture("cupcake.png")).centerAnchor();
+        cupcake.pointerEnabled = false;
+        System.pointer.move.connect(function (event) {
+            cupcake.setXY(event.viewX, event.viewY);
+        });
+        System.root.addChild(new Entity().add(cupcake));
     }
 
     private static function main ()

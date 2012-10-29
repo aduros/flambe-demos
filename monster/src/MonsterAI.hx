@@ -48,7 +48,11 @@ class MonsterAI extends Component
             walking = true;
         }
 
-        owner.get(MoviePlayer).loop(walking ? "walk" : "idle", false);
+        var player = owner.get(MoviePlayer);
+        // Don't interrupt any currently playing oneshot animations
+        if (player.looping) {
+            player.loop(walking ? "walk" : "idle", false);
+        }
     }
 
     private static inline var SPEED = 100; // pixels per second -ish
