@@ -37,37 +37,34 @@ class DraggingMain
             .add(new FillSprite(0x303030, System.stage.width, System.stage.height)));
 
         // Add a bunch of draggable tentacle sprites
-        var tentacles = [];
+        var tentacleLayer = new Entity();
         for (ii in 0...10) {
-            var tentacle = new Entity()
-                .add(new ImageSprite(pack.loadTexture("tentacle.png")))
-                .add(new Draggable());
-            var sprite = tentacle.get(ImageSprite);
+            var sprite = new ImageSprite(pack.loadTexture("tentacle.png"));
             sprite.x._ = Math.random() * (System.stage.width-sprite.getNaturalWidth());
             sprite.y._ = Math.random() * (System.stage.height-sprite.getNaturalHeight());
-            sprite.scaleX._ = sprite.scaleY._ = 0.5 + Math.random()*4;
+            sprite.setScale(0.5 + Math.random()*4);
             sprite.rotation._ = Math.random()*90;
             sprite.centerAnchor();
-            System.root.addChild(tentacle);
 
-            // Insert backwards to ensure they're sorted by screen depth
-            tentacles.unshift(tentacle);
+            var tentacle = new Entity().add(sprite).add(new Draggable());
+            tentacleLayer.addChild(tentacle);
         }
+        System.root.addChild(tentacleLayer);
 
         // Make them zoomable using the mouse wheel or pinching, depending on device support. Note
         // that some environments may have both a mouse and a touch screen
         if (System.mouse.supported) {
-            addScrollListener(tentacles);
+            addScrollListener(tentacleLayer);
         }
         if (System.touch.supported) {
-            addPinchListener(tentacles);
+            addPinchListener(tentacleLayer);
         }
     }
 
-    private static function addScrollListener (tentacles :Array<Entity>)
+    private static function addScrollListener (tentacleLayer :Entity)
     {
         System.mouse.scroll.connect(function (velocity :Float) {
-            var target = spriteUnderPoint(tentacles, System.mouse.x, System.mouse.y);
+            var target = Sprite.hitTest(tentacleLayer, System.mouse.x, System.mouse.y);
             if (target != null) {
                 target.scaleX._ += 0.1*velocity;
                 target.scaleY._ = target.scaleX._;
@@ -75,7 +72,7 @@ class DraggingMain
         });
     }
 
-    private static function addPinchListener (tentacles :Array<Entity>)
+    private static function addPinchListener (tentacleLayer :Entity)
     {
         var pointA = null, pointB = null;
         var startDistance = -1.0;
@@ -86,7 +83,7 @@ class DraggingMain
             var points = System.touch.points;
             switch (points.length) {
             case 1: // First touch, record the sprite under the finger
-                target = spriteUnderPoint(tentacles, newPoint.viewX, newPoint.viewY);
+                target = Sprite.hitTest(tentacleLayer, newPoint.viewX, newPoint.viewY);
             case 2: // Initiate the pinching!
                 pointA = points[0];
                 pointB = points[1];
@@ -116,17 +113,5 @@ class DraggingMain
                 target = null;
             }
         });
-    }
-
-    /** Gets the entity under a point in stage co-ordinates. */
-    private static function spriteUnderPoint (tentacles :Array<Entity>, x :Float, y :Float) :Sprite
-    {
-        for (tentacle in tentacles) {
-            var sprite = tentacle.get(Sprite);
-            if (sprite.contains(x, y)) {
-                return sprite;
-            }
-        }
-        return null;
     }
 }
