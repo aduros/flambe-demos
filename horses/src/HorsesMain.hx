@@ -28,10 +28,12 @@ class HorsesMain
         scene = lib.createMovie("scene");
         System.root.addChild(new Entity().add(scene));
 
-        // Pause all horses initially
+        // Pause all horses initially, and add pointer listeners
         for (id in 1...5) {
             var layer = scene.getLayer("horse"+id);
-            layer.get(MovieSprite).speed._ = 0;
+            var sprite = layer.get(MovieSprite);
+            sprite.paused = true;
+            sprite.pointerDown.connect(function (_) toggleHorse(id));
         }
 
         // Keep the scene centered on the stage
@@ -45,34 +47,24 @@ class HorsesMain
         };
         System.stage.resize.connect(onResize);
         onResize();
-
-        // On a click or tap, start or stop a horse
-        System.pointer.down.connect(function (event) {
-            var id = 1 + Std.int((event.viewX-scene.x._) / (sceneWidth/4));
-            toggleHorse(id);
-        });
     }
 
     private static function toggleHorse (id :Int)
     {
         var layer = scene.getLayer("horse"+id, false);
-        if (layer == null) {
-            return; // Horse not found, carry on quietly
-        }
-
         var movie = layer.get(MovieSprite);
         var playback = playbacks.get(id);
+
         if (playback == null) {
-            // Start the loop and play the animation
-            playback = pack.loadSound("horse"+id).loop();
-            playbacks.set(id, playback);
-            movie.speed._ = 1;
+            // Start the sound loop and play the animation
+            playbacks.set(id, pack.loadSound("horse"+id).loop());
+            movie.paused = false;
 
         } else {
-            // Stop the loop and the animation
+            // Stop the sound loop and the animation
             playback.dispose();
             playbacks.remove(id);
-            movie.speed._ = 0;
+            movie.paused = true;
             movie.position = 0;
         }
     }
