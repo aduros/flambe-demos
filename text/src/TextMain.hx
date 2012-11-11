@@ -20,8 +20,7 @@ class TextMain
         System.root.addChild(background);
 
         var font = new Font(pack, "handel");
-        var label = new Entity()
-            .add(new TextSprite(font, "Go ahead, tap me"));
+        var label = new TextSprite(font, "Go ahead, tap me");
 
         var messages = [
             "You call that a tap?",
@@ -30,18 +29,17 @@ class TextMain
             "(Your touch screen works)",
         ];
         var taps = 0;
-        var sprite = label.get(TextSprite);
-        sprite.pointerDown.connect(function (_) {
+        label.pointerDown.connect(function (_) {
             var margin = 50;
-            sprite.x.animateTo(
+            label.x.animateTo(
                 margin + (System.stage.width - 2*margin)*Math.random(), 1, Ease.linear);
-            sprite.y.animateTo(
+            label.y.animateTo(
                 margin + (System.stage.height - 2*margin)*Math.random(), 1, Ease.linear);
-            sprite.rotation.animateTo(360*Math.random(), 1, Ease.quadOut);
-            sprite.text = messages[taps++ % messages.length];
+            label.rotation.animateTo(360*Math.random(), 1, Ease.quadOut);
+            label.text = messages[taps++ % messages.length];
         });
 
-        System.root.addChild(label);
+        System.root.addChild(new Entity().add(label));
     }
 
     private static function main ()

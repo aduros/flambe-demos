@@ -5,6 +5,7 @@ import flambe.asset.Manifest;
 import flambe.display.FillSprite;
 import flambe.display.ImageSprite;
 import flambe.display.Sprite;
+import flambe.input.MouseCursor;
 import flambe.swf.Library;
 import flambe.swf.MoviePlayer;
 
@@ -21,16 +22,21 @@ class MonsterMain
             .add(new MonsterAI());
         System.root.addChild(monster);
 
+        // Clicking on the monster plays an attack animation
         monster.get(Sprite).pointerDown.connect(function (event) {
             monster.get(MoviePlayer).play("attack");
         });
 
-        var cupcake = new ImageSprite(pack.loadTexture("cupcake.png")).centerAnchor();
-        cupcake.pointerEnabled = false;
+        // Create a cupcake that follows the pointer
+        var cupcake = new ImageSprite(pack.loadTexture("cupcake.png"))
+            .centerAnchor().disablePointer();
         System.pointer.move.connect(function (event) {
             cupcake.setXY(event.viewX, event.viewY);
         });
         System.root.addChild(new Entity().add(cupcake));
+
+        // Hide the mouse cursor
+        System.mouse.cursor = None;
     }
 
     private static function main ()
