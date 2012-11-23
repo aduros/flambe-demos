@@ -28,7 +28,7 @@ class MonsterMain
         });
 
         // Create a cupcake that follows the pointer
-        var cupcake = new ImageSprite(pack.loadTexture("cupcake.png"))
+        var cupcake = new ImageSprite(pack.getTexture("cupcake.png"))
             .centerAnchor().disablePointer();
         System.pointer.move.connect(function (event) {
             cupcake.setXY(event.viewX, event.viewY);

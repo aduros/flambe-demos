@@ -39,7 +39,7 @@ class Bullet extends Component
 
                 // FIXME: Migrate to new AnimatedSprite system
                 // var fireball = new Entity()
-                //     .add(new AnimatedSprite(ShooterCtx.pack.loadTexture("explosion.png"), 13, 1))
+                //     .add(new AnimatedSprite(ShooterCtx.pack.getTexture("explosion.png"), 13, 1))
                 //     .add(new Script());
                 // fireball.get(AnimatedSprite).centerAnchor();
                 // fireball.get(Script).run(new Sequence([

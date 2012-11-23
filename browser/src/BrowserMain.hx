@@ -35,7 +35,7 @@ class BrowserMain
         var scene = new Entity()
             .add(new FillSprite(0x202020, System.stage.width, System.stage.height));
 
-        var downButton = new ImageSprite(pack.loadTexture("down.png"));
+        var downButton = new ImageSprite(pack.getTexture("down.png"));
         downButton.x._ = System.stage.width/2 - downButton.texture.width/2;
         downButton.y._ = 10;
         downButton.pointerDown.connect(function (_) {
@@ -57,7 +57,7 @@ class BrowserMain
         location.y._ = System.stage.height - font.size - 10;
         scene.addChild(new Entity().add(location));
 
-        var closeButton = new ImageSprite(pack.loadTexture("close.png"));
+        var closeButton = new ImageSprite(pack.getTexture("close.png"));
         closeButton.x._ = System.stage.width - closeButton.texture.width;
         closeButton.y._ = System.stage.height - closeButton.texture.height;
         closeButton.pointerDown.connect(function (_) {
@@ -76,7 +76,7 @@ class BrowserMain
             // Ensure the webview is properly disposed when the scene is disposed
             scene.add(new Disposer().add(view));
 
-            var openButton = new ImageSprite(pack.loadTexture("open.png"));
+            var openButton = new ImageSprite(pack.getTexture("open.png"));
             openButton.x._ = closeButton.x._ - openButton.texture.width;
             openButton.y._ = System.stage.height - closeButton.texture.height;
             openButton.pointerDown.connect(function (_) {

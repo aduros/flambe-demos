@@ -41,7 +41,7 @@ class SpaceComponent extends Component
         body.rotation = Math.random() * 2*FMath.PI;
 
         var entity = addBody(body);
-        entity.add(new ImageSprite(_pack.loadTexture("box.png")).centerAnchor());
+        entity.add(new ImageSprite(_pack.getTexture("box.png")).centerAnchor());
         return entity;
     }
 
@@ -53,7 +53,7 @@ class SpaceComponent extends Component
         body.rotation = Math.random() * 2*FMath.PI;
 
         var entity = addBody(body);
-        entity.add(new ImageSprite(_pack.loadTexture("ball.png")).centerAnchor());
+        entity.add(new ImageSprite(_pack.getTexture("ball.png")).centerAnchor());
         return entity;
     }
 

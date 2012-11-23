@@ -57,7 +57,7 @@ class HorsesMain
 
         if (playback == null) {
             // Start the sound loop and play the animation
-            playbacks.set(id, pack.loadSound("horse"+id).loop());
+            playbacks.set(id, pack.getSound("horse"+id).loop());
             movie.paused = false;
 
         } else {
