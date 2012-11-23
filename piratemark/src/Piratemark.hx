@@ -38,7 +38,7 @@ class Piratemark
         // Add a bunch of pirates
         for (ii in 0...10) {
             var pirate = new Entity()
-                .add(new ImageSprite(pack.getTexture("pirate.png")))
+                .add(new ImageSprite(pack.getTexture("pirate")))
                 .add(new Bouncy());
             var sprite = pirate.get(Sprite);
             sprite.setXY(Math.random()*System.stage.width, Math.random()*System.stage.height);

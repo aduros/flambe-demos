@@ -39,7 +39,7 @@ class DraggingMain
         // Add a bunch of draggable tentacle sprites
         var tentacleLayer = new Entity();
         for (ii in 0...10) {
-            var sprite = new ImageSprite(pack.getTexture("tentacle.png"));
+            var sprite = new ImageSprite(pack.getTexture("tentacle"));
             sprite.x._ = Math.random() * (System.stage.width-sprite.getNaturalWidth());
             sprite.y._ = Math.random() * (System.stage.height-sprite.getNaturalHeight());
             sprite.setScale(0.5 + Math.random()*4);
