@@ -29,7 +29,7 @@ class BodyComponent extends Component
         }
     }
 
-    override public function onDispose ()
+    override public function onRemoved ()
     {
         // Remove this body from the space
         _body.space = null;
