@@ -21,7 +21,4 @@ def build(ctx):
         platforms=platforms,
         libs="nape",
         flags="-D NAPE_RELEASE_BUILD" if not ctx.env.debug else "",
-        flash_version="11", # Enable the Stage3D renderer on the browser flash target
-        dead_code_elimination=False, # Nape in JS doesn't work properly with dead code elimination,
-            # so temporarily disable it, see https://github.com/deltaluca/nape/issues/39
         air_password="samplePassword")
