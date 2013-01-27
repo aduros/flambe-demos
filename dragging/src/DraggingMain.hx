@@ -11,8 +11,6 @@ import flambe.display.Sprite;
 import flambe.Entity;
 import flambe.System;
 
-using Lambda;
-
 class DraggingMain
 {
     private static function main ()
@@ -107,7 +105,7 @@ class DraggingMain
         });
 
         System.touch.up.connect(function (oldPoint :TouchPoint) {
-            if (System.touch.points.count() < 2) {
+            if (System.touch.points.length < 2) {
                 // Stop the pinch gesture
                 pointA = pointB = null;
                 target = null;
