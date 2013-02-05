@@ -7,7 +7,7 @@ set -e
 PROJECT_ROOT=`readlink -f $(dirname $0)/..`
 cd $PROJECT_ROOT;
 
-source bin/build-all
+./bin/build-all
 
 for demo in *; do
     if [ ! -d "$demo/deploy" ]; then
