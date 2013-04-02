@@ -87,11 +87,10 @@ PLATFORMS = [
 
 # Generate unit test classes for each platform
 classes = {}
-id = 0
-for platform in PLATFORMS:
+for index, platform in enumerate(PLATFORMS):
     d = dict(FlambeTest.__dict__)
     name = "%s_%s_%s_%s" % (FlambeTest.__name__, platform["browserName"],
-        platform.get("platform", "ANY"), id++)
+        platform.get("platform", "ANY"), index)
     name = name.replace(" ", "").replace(".", "")
     d.update({"__test__": True, "caps": platform})
     classes[name] = new.classobj(name, (FlambeTest,), d)
