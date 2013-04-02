@@ -64,25 +64,25 @@ class FlambeTest(unittest.TestCase):
         self.assertEquals(connection.getresponse().status, 200)
 
 PLATFORMS = [
-    dict(webdriver.DesiredCapabilities.CHROME, platform="WINDOWS"),
-    dict(webdriver.DesiredCapabilities.FIREFOX, platform="WINDOWS"),
-    dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="10", platform="WINDOWS"),
-    dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="9", platform="WINDOWS"),
-    dict(webdriver.DesiredCapabilities.OPERA, platform="WINDOWS"),
+    dict(webdriver.DesiredCapabilities.CHROME, platform="Windows 2008"),
+    dict(webdriver.DesiredCapabilities.FIREFOX, platform="Windows 2008"),
+    dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="10", platform="Windows 2012"),
+    dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="9", platform="Windows 2008"),
+    dict(webdriver.DesiredCapabilities.OPERA, platform="Windows 2008"),
 
-    dict(webdriver.DesiredCapabilities.CHROME, platform="MAC"),
-    dict(webdriver.DesiredCapabilities.FIREFOX, platform="MAC"),
-    dict(webdriver.DesiredCapabilities.SAFARI, platform="MAC"),
+    dict(webdriver.DesiredCapabilities.CHROME, platform="Mac"),
+    dict(webdriver.DesiredCapabilities.FIREFOX, platform="Mac"),
+    dict(webdriver.DesiredCapabilities.SAFARI, platform="Mac"),
 
-    dict(webdriver.DesiredCapabilities.CHROME, platform="LINUX"),
-    dict(webdriver.DesiredCapabilities.FIREFOX, platform="LINUX"),
-    dict(webdriver.DesiredCapabilities.OPERA, platform="LINUX"),
+    dict(webdriver.DesiredCapabilities.CHROME, platform="Linux"),
+    dict(webdriver.DesiredCapabilities.FIREFOX, platform="Linux"),
+    dict(webdriver.DesiredCapabilities.OPERA, version="12", platform="Linux"),
 
-    dict(webdriver.DesiredCapabilities.IPAD, version="6", platform="MAC"),
-    dict(webdriver.DesiredCapabilities.IPAD, version="5", platform="MAC"),
-    dict(webdriver.DesiredCapabilities.IPHONE, version="6", platform="MAC"),
-    dict(webdriver.DesiredCapabilities.IPHONE, version="5", platform="MAC"),
-    # dict(webdriver.DesiredCapabilities.ANDROID),
+    dict(webdriver.DesiredCapabilities.IPAD, version="6", platform="Mac 10.8"),
+    dict(webdriver.DesiredCapabilities.IPAD, version="5.1", platform="Mac 10.8"),
+    dict(webdriver.DesiredCapabilities.IPHONE, version="6", platform="Mac 10.8"),
+    dict(webdriver.DesiredCapabilities.IPHONE, version="5.1", platform="Mac 10.8"),
+    # dict(webdriver.DesiredCapabilities.ANDROID, version="4", platform="Linux"),
 ]
 
 # Generate unit test classes for each platform
