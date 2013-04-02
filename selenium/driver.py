@@ -8,7 +8,6 @@ import httplib
 import json
 import new
 import os
-import random
 import sys
 import unittest
 
@@ -34,7 +33,6 @@ class FlambeTest(unittest.TestCase):
         self.driver = webdriver.Remote(desired_capabilities=self.caps, command_executor=hub_url)
 
         self.job_id = self.driver.session_id
-        print("Running job: https://saucelabs.com/jobs/%s" % self.job_id)
         self.driver.implicitly_wait(30)
 
     def test_sauce (self):
@@ -63,6 +61,8 @@ class FlambeTest(unittest.TestCase):
                            result, headers={"Authorization": "Basic %s" % auth})
         self.assertEquals(connection.getresponse().status, 200)
 
+        print("Job summary: https://saucelabs.com/jobs/%s" % self.job_id)
+
 PLATFORMS = [
     dict(webdriver.DesiredCapabilities.CHROME, platform="Windows 2008"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Windows 2008"),
@@ -87,10 +87,11 @@ PLATFORMS = [
 
 # Generate unit test classes for each platform
 classes = {}
+id = 0
 for platform in PLATFORMS:
     d = dict(FlambeTest.__dict__)
     name = "%s_%s_%s_%s" % (FlambeTest.__name__, platform["browserName"],
-        platform.get("platform", "ANY"), random.randint(0, 999))
+        platform.get("platform", "ANY"), id++)
     name = name.replace(" ", "").replace(".", "")
     d.update({"__test__": True, "caps": platform})
     classes[name] = new.classobj(name, (FlambeTest,), d)
