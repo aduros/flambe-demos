@@ -53,7 +53,9 @@ class SeleniumMain
 
             // Test asset pack loading
             var loader = System.loadAssetPack(Manifest.build("bootstrap"));
-            loader.error.connect(function (_) assert(false));
+            loader.error.connect(function (error) catchErrors(function () {
+                fail(error);
+            }));
             loader.get(function (pack) catchErrors(function () {
                 onSuccess(pack);
                 setStatus("OK"); // All done!
@@ -64,8 +66,14 @@ class SeleniumMain
     private static function assert (condition :Bool, ?pos :PosInfos)
     {
         if (!condition) {
-            throw "Assert: "+pos.fileName+":"+pos.lineNumber;
+            fail("Assert", pos);
         }
+    }
+
+    private static function fail (message :String, ?pos :PosInfos)
+    {
+        // Throw an error that should be caught by catchErrors
+        throw message+" ("+pos.fileName+":"+pos.lineNumber+")";
     }
 
     private static function catchErrors (fn :Void -> Void)
