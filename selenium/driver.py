@@ -64,7 +64,6 @@ class FlambeTest(unittest.TestCase):
         print("Job summary: https://saucelabs.com/jobs/%s" % self.job_id)
 
 # Some platform tests currently disabled:
-# - Opera on Linux: Weird sound loading bug (MEDIA_ERR_SRC_NOT_SUPPORTED on sound.ogg)
 # - iOS 6: Seems to crash Safari when using Web Audio from the simulator
 # - Chrome on Windows/Mac: Mysterious sad tab
 PLATFORMS = [
@@ -80,7 +79,7 @@ PLATFORMS = [
 
     dict(webdriver.DesiredCapabilities.CHROME, platform="Linux"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Linux"),
-    # dict(webdriver.DesiredCapabilities.OPERA, version="12", platform="Linux"),
+    dict(webdriver.DesiredCapabilities.OPERA, version="12", platform="Linux"),
 
     # dict(webdriver.DesiredCapabilities.IPAD, version="6", platform="Mac 10.8"),
     dict(webdriver.DesiredCapabilities.IPAD, version="5.1", platform="Mac 10.8"),
