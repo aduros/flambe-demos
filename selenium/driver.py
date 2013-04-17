@@ -66,10 +66,11 @@ class FlambeTest(unittest.TestCase):
 # Some platform tests currently disabled:
 # - iOS 6: Seems to crash Safari when using Web Audio from the simulator
 # - Chrome on Windows/Mac: Mysterious sad tab
+# - IE 10: Audio silently fails to load. I'm assuming this is Windows Server 2012 / Sauce specific
 PLATFORMS = [
     # dict(webdriver.DesiredCapabilities.CHROME, platform="Windows 2008"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Windows 2008"),
-    dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="10", platform="Windows 2012"),
+    # dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="10", platform="Windows 2012"),
     dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="9", platform="Windows 2008"),
     dict(webdriver.DesiredCapabilities.OPERA, platform="Windows 2008"),
 
