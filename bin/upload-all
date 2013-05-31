@@ -15,6 +15,9 @@ for demo in *; do
     fi
     pushd $demo
     rsync -avz --delete deploy/web/ catdap:web/flambe/demos/$demo
-    scp deploy/packages/*.apk catdap:web/flambe/demos/$demo
+
+    if [ -d deploy/packages ]; then
+        scp deploy/packages/*.apk catdap:web/flambe/demos/$demo
+    fi
     popd
 done
