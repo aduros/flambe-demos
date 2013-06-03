@@ -4,7 +4,7 @@
 
 import haxe.PosInfos;
 
-import js.Lib;
+import js.Browser;
 
 import flambe.animation.Ease;
 import flambe.asset.AssetPack;
@@ -88,6 +88,6 @@ class SeleniumMain
     private static function setStatus (status :String)
     {
         // Set the test status so driver.py can scoop it up
-        Reflect.setField(Lib.window, "$flambe_selenium_status", status);
+        Reflect.setField(Browser.window, "$flambe_selenium_status", status);
     }
 }
