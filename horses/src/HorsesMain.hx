@@ -13,7 +13,7 @@ class HorsesMain
     private static var scene :MovieSprite;
 
     // Maps the horse to the sound it's currently playing, if any
-    private static var playbacks = new IntHash<Playback>();
+    private static var playbacks = new Map<Int,Playback>();
 
     private static function onSuccess (pack :AssetPack)
     {
