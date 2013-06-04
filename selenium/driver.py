@@ -74,18 +74,18 @@ PLATFORMS = [
     dict(webdriver.DesiredCapabilities.INTERNETEXPLORER, version="9", platform="Windows 2008"),
     dict(webdriver.DesiredCapabilities.OPERA, platform="Windows 2008"),
 
-    # dict(webdriver.DesiredCapabilities.CHROME, platform="Mac"),
-    dict(webdriver.DesiredCapabilities.FIREFOX, platform="Mac"),
-    dict(webdriver.DesiredCapabilities.SAFARI, platform="Mac"),
+    # dict(webdriver.DesiredCapabilities.CHROME, platform="OS X"),
+    dict(webdriver.DesiredCapabilities.FIREFOX, platform="OS X"),
+    dict(webdriver.DesiredCapabilities.SAFARI, platform="OS X"),
 
     dict(webdriver.DesiredCapabilities.CHROME, platform="Linux"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Linux"),
     dict(webdriver.DesiredCapabilities.OPERA, version="12", platform="Linux"),
 
-    # dict(webdriver.DesiredCapabilities.IPAD, version="6", platform="Mac 10.8"),
-    dict(webdriver.DesiredCapabilities.IPAD, version="5.1", platform="Mac 10.8"),
-    # dict(webdriver.DesiredCapabilities.IPHONE, version="6", platform="Mac 10.8"),
-    dict(webdriver.DesiredCapabilities.IPHONE, version="5.1", platform="Mac 10.8"),
+    # dict(webdriver.DesiredCapabilities.IPAD, version="6", platform="OS X 10.8"),
+    dict(webdriver.DesiredCapabilities.IPAD, version="5.1", platform="OS X 10.8"),
+    # dict(webdriver.DesiredCapabilities.IPHONE, version="6", platform="OS X 10.8"),
+    dict(webdriver.DesiredCapabilities.IPHONE, version="5.1", platform="OS X 10.8"),
     dict(webdriver.DesiredCapabilities.ANDROID, version="4", platform="Linux"),
 ]
 
