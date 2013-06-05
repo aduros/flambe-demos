@@ -76,7 +76,7 @@ PLATFORMS = [
 
     # dict(webdriver.DesiredCapabilities.CHROME, platform="Mac"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Mac 10.6"),
-    dict(webdriver.DesiredCapabilities.SAFARI, platform="Mac 10.8"),
+    dict(webdriver.DesiredCapabilities.SAFARI, version="5", platform="Mac 10.6"),
 
     dict(webdriver.DesiredCapabilities.CHROME, platform="Linux"),
     dict(webdriver.DesiredCapabilities.FIREFOX, platform="Linux"),
