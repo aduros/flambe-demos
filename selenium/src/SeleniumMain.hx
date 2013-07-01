@@ -35,7 +35,7 @@ class SeleniumMain
         sound.play(0.25);
 
         // Test file loading
-        assert(pack.getFile("file.txt") == "Hello world\n");
+        assert(pack.getFile("file.txt").toString() == "Hello world\n");
     }
 
     private static function main ()
