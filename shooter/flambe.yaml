@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Shooter Demo
+version: 1.0.0
+id: flambe.shooter
+
+# The main class name
+main: ShooterMain

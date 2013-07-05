@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Browser Demo
+version: 1.0.0
+id: flambe.browser
+
+# The main class name
+main: BrowserMain

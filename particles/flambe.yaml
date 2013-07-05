@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Particles Demo
+version: 1.0.0
+id: flambe.particles
+
+# The main class name
+main: ParticlesMain

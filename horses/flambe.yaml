@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Horses Demo
+version: 1.0.0
+id: flambe.horses
+
+# The main class name
+main: HorsesMain

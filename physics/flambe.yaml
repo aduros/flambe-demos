@@ -1,0 +1,9 @@
+# The name, version and identifier, for mobile app packaging
+name: Paint Demo
+version: 1.0.0
+id: flambe.paint
+
+# The main class name
+main: PhysicsMain
+
+haxe_flags: -lib nape -D NAPE_RELEASE_BUILD

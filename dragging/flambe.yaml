@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Dragging Demo
+version: 1.0.0
+id: flambe.dragging
+
+# The main class name
+main: DraggingMain

@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Piratemark Demo
+version: 1.0.0
+id: flambe.piratemark
+
+# The main class name
+main: Piratemark

@@ -1,0 +1,7 @@
+# The name, version and identifier, for mobile app packaging
+name: Monster Demo
+version: 1.0.0
+id: flambe.monster
+
+# The main class name
+main: MonsterMain
