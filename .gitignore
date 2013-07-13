@@ -1,3 +1,2 @@
-.lock-waf*
-build
-deploy
+build/
+.flambe-cache/

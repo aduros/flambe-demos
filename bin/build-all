@@ -1,18 +1,28 @@
-#!/bin/bash
+#!/bin/sh -e
 #
 # Builds all the demos
 
-set -e
+root=`readlink -f $(dirname $0)/..`
+cd $root
 
-PROJECT_ROOT=`readlink -f $(dirname $0)/..`
-cd $PROJECT_ROOT;
+targets="html flash"
+if command -v adt > /dev/null; then
+    # Only build for Android if AIR is installed
+    targets="$targets android"
+fi
 
 for demo in *; do
-    if [ ! -f "$demo/wscript" ]; then
+    if [ ! -f "$demo/flambe.yaml" ]; then
         continue
     fi
-    pushd $demo
-    rm -rf deploy
-    wafl -v distclean configure install -j1 "$@"
-    popd
+
+    echo "Building $demo..."
+    echo
+
+    cd $demo
+    flambe clean
+    flambe build $targets "$@"
+    cd ..
+
+    echo
 done

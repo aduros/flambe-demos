@@ -1,23 +1,23 @@
-#!/bin/bash
+#!/bin/sh -e
 #
 # Builds and uploads release versions of all the demos
 
-set -e
-
-PROJECT_ROOT=`readlink -f $(dirname $0)/..`
-cd $PROJECT_ROOT;
+root=`readlink -f $(dirname $0)/..`
+cd $root
 
 ./bin/build-all
 
 for demo in *; do
-    if [ ! -d "$demo/deploy" ]; then
+    if [ ! -d "$demo/flambe.yaml" ]; then
         continue
     fi
-    pushd $demo
-    rsync -avz --delete deploy/web/ catdap:web/flambe/demos/$demo
 
-    if [ -d deploy/packages ]; then
-        scp deploy/packages/*.apk catdap:web/flambe/demos/$demo
+    echo "Uploading $demo..."
+
+    cd $demo
+    rsync -az --delete build/web/ catdap:web/flambe/demos/$demo
+    if [ -f build/main-android.apk ]; then
+        scp build/main-android.apk catdap:web/flambe/demos/$demo
     fi
-    popd
+    cd ..
 done
