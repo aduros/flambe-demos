@@ -11,3 +11,10 @@ default_platform: flash
 
 # Optional flags to pass to the Haxe compiler
 # haxe_flags: -lib nape -cp another_dir
+
+# Additional configuration for Android
+android:
+  AndroidManifest.xml: |
+    <manifest android:installLocation="auto">
+      <uses-permission android:name="android.permission.INTERNET" />
+    </manifest>
