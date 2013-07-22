@@ -13,7 +13,7 @@ fi
 ./bin/build-all
 
 for demo in *; do
-    if [ ! -d "$demo/flambe.yaml" ]; then
+    if [ ! -f "$demo/flambe.yaml" ]; then
         continue
     fi
 
