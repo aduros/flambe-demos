@@ -1,0 +1,20 @@
+# The name, version and identifier, for mobile app packaging
+name: Extensions Demo
+version: 1.0.0
+id: flambe.extensions
+
+# The main class name
+main: ExtensionsMain
+
+# The platform to use when invoking `run` or `build` with no arguments
+default_platform: android
+
+# Optional flags to pass to the Haxe compiler
+# haxe_flags: -lib nape -cp another_dir
+
+# Additional configuration for Android
+android:
+  AndroidManifest.xml: |
+    <manifest android:installLocation="auto">
+      <uses-permission android:name="android.permission.VIBRATE" />
+    </manifest>
