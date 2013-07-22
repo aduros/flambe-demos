@@ -1,9 +1,13 @@
 # The name, version and identifier, for mobile app packaging
-name: Paint Demo
+name: Physics Demo
 version: 1.0.0
-id: flambe.paint
+id: flambe.physics
 
 # The main class name
 main: PhysicsMain
 
+# The platform to use when invoking `run` or `build` with no arguments
+default_platform: flash
+
+# Optional flags to pass to the Haxe compiler
 haxe_flags: -lib nape -D NAPE_RELEASE_BUILD
