@@ -5,6 +5,11 @@
 root=`readlink -f $(dirname $0)/..`
 cd $root
 
+if ! git diff-index --quiet HEAD --; then
+    echo "You have uncommitted changes"
+    exit 1
+fi
+
 ./bin/build-all
 
 for demo in *; do
