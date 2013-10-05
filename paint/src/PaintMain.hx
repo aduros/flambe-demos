@@ -65,7 +65,7 @@ class PaintMain
                 1/9, 1/9, 1/9,
                 1/9, 1/9, 1/9,
             ]);
-            canvas.writePixels(blurredPixels, 0, 0, canvas.width, canvas.width);
+            canvas.writePixels(blurredPixels, 0, 0, canvas.width, canvas.height);
         });
         game.addChild(new Entity().add(blurButton));
     }
