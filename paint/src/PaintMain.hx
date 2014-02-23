@@ -24,14 +24,14 @@ class PaintMain
         selectedColor.watch(function (color,_) {
             var source = pack.getTexture("brush");
             var recolored = createRecolor(source, color);
-            brushTexture = System.createTexture(source.width, source.height);
+            brushTexture = System.renderer.createTexture(source.width, source.height);
             brushTexture.writePixels(recolored, 0, 0, source.width, source.height);
         });
 
         var game = new Entity();
         System.root.addChild(game);
 
-        var canvas = System.createTexture(System.stage.width, System.stage.height);
+        var canvas = System.renderer.createTexture(System.stage.width, System.stage.height);
         canvas.graphics.fillRect(0xe6e6e6, 0, 0, canvas.width, canvas.height);
 
         // Draw the brush texture when pressing the canvas
