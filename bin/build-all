@@ -5,7 +5,7 @@
 root=`readlink -f $(dirname $0)/..`
 cd $root
 
-targets="html flash"
+targets="html flash firefox"
 if command -v adt > /dev/null; then
     # Only build for Android if AIR is installed
     targets="$targets android"
