@@ -11,6 +11,7 @@ import flambe.scene.Director;
 import flambe.scene.SlideTransition;
 import flambe.swf.Flipbook;
 import flambe.swf.Library;
+import flambe.util.MessageBundle;
 
 /** Contains all the game state that needs to get passed around. */
 class ShmupContext
@@ -21,6 +22,7 @@ class ShmupContext
     public var director (default, null) :Director;
 
     // Some constructed assets
+    public var messages (default, null) :MessageBundle;
     public var lightFont (default, null) :Font;
     public var darkFont (default, null) :Font;
     public var lib (default, null) :Library;
@@ -28,11 +30,12 @@ class ShmupContext
     /** The currently active level. */
     public var level :LevelModel;
 
-    public function new (pack :AssetPack, director :Director)
+    public function new (mainPack :AssetPack, localePack :AssetPack, director :Director)
     {
-        this.pack = pack;
+        this.pack = mainPack;
         this.director = director;
 
+        this.messages = MessageBundle.parse(localePack.getFile("messages.ini").toString());
         this.lightFont = new Font(pack, "fonts/Light");
         this.darkFont = new Font(pack, "fonts/Dark");
 

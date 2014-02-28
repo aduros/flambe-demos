@@ -75,7 +75,7 @@ class LevelModel extends Component
             script.run(new Sequence([
                 new AnimateTo(worldSpeed.scale, 0, 1.5),
                 new CallFunction(function () {
-                    _ctx.showPrompt("You scored "+score._+" points!", [
+                    _ctx.showPrompt(_ctx.messages.get("game_over", [score._]), [
                         "Replay", function () {
                             _ctx.enterPlayingScene(false);
                         },
@@ -85,7 +85,7 @@ class LevelModel extends Component
                         },
                         "Tweet", function () {
                             System.web.openBrowser("https://twitter.com/share" +
-                                "?text=I just scored "+score._+" points!");
+                                "?text="+_ctx.messages.get("tweet", [score._]));
                         },
                     ]);
                 }),

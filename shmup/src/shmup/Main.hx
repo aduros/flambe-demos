@@ -26,19 +26,25 @@ class Main
         var manifest = Manifest.build("bootstrap");
         System.loadAssetPack(manifest).get(function (bootstrapPack) {
 
-            // Then load the bulk of game's assets from the main pack
-            var promise = System.loadAssetPack(Manifest.build("main"));
-            promise.get(function (mainPack) {
-                var ctx = new ShmupContext(mainPack, director);
-                ctx.enterHomeScene(false);
+            // Then load up the pack containing localized assets. Depending on the user's language,
+            // this will load either "locale", "locale-es", or "locale-pt". See the docs for
+            // Manifest.buildLocalized() for more info.
+            System.loadAssetPack(Manifest.buildLocalized("locale")).get(function (localePack) {
 
-                // Free up the preloader assets to save memory
-                bootstrapPack.dispose();
+                // Then finally load the bulk of game's assets from the main pack
+                var promise = System.loadAssetPack(Manifest.build("main"));
+                promise.get(function (mainPack) {
+                    var ctx = new ShmupContext(mainPack, localePack, director);
+                    ctx.enterHomeScene(false);
+
+                    // Free up the preloader assets to save memory
+                    bootstrapPack.dispose();
+                });
+
+                // Show a simple preloader while the main pack is loading
+                var preloader = PreloaderScene.create(bootstrapPack, promise);
+                director.unwindToScene(preloader);
             });
-
-            // Show a simple preloader while the main pack is loading
-            var preloader = PreloaderScene.create(bootstrapPack, promise);
-            director.unwindToScene(preloader);
         });
     }
 }

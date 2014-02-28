@@ -1,7 +1,8 @@
 # Shmup demo
 
 This is a prototype of a minimal but complete game. It shows how to use
-a preloader, scenes, animation, text, sound effects, and more.
+a preloader, localization, scenes, animation, text, sound effects, and
+more. It might make a good foundation for a real game project.
 
 Try it out in [Flash], [HTML5] or [Android].
 
@@ -10,7 +11,8 @@ Try it out in [Flash], [HTML5] or [Android].
 `shmup.Main` is the entry point to the game. Then it loads the bootstrap
 pack, which contains assets only used by the preloader. Once that's
 loaded, it can actually show the preloader and load the main bulk of the
-game.
+game. All localized assets (just a messages.ini for localized text in
+this demo) are separated into a "locale" pack.
 
 Once the game is loaded, a `ShmupContext` is created which contains all
 the game state that gets passed around. The scenes are split up into
