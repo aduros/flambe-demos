@@ -46,7 +46,7 @@ class TextMain
     {
         System.init();
 
-        var loader = System.loadAssetPack(Manifest.build("bootstrap"));
+        var loader = System.loadAssetPack(Manifest.fromAssets("bootstrap"));
         loader.success.connect(onSuccess);
         loader.error.connect(function (message) {
             trace("Load error: " + message);

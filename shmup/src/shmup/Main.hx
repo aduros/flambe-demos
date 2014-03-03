@@ -23,16 +23,16 @@ class Main
         System.root.add(director);
 
         // Load up the compiled pack in the assets directory named "bootstrap"
-        var manifest = Manifest.build("bootstrap");
+        var manifest = Manifest.fromAssets("bootstrap");
         System.loadAssetPack(manifest).get(function (bootstrapPack) {
 
             // Then load up the pack containing localized assets. Depending on the user's language,
             // this will load either "locale", "locale-es", or "locale-pt". See the docs for
-            // Manifest.buildLocalized() for more info.
-            System.loadAssetPack(Manifest.buildLocalized("locale")).get(function (localePack) {
+            // Manifest.fromAssetsLocalized() for more info.
+            System.loadAssetPack(Manifest.fromAssetsLocalized("locale")).get(function (localePack) {
 
                 // Then finally load the bulk of game's assets from the main pack
-                var promise = System.loadAssetPack(Manifest.build("main"));
+                var promise = System.loadAssetPack(Manifest.fromAssets("main"));
                 promise.get(function (mainPack) {
                     var ctx = new ShmupContext(mainPack, localePack, director);
                     ctx.enterHomeScene(false);

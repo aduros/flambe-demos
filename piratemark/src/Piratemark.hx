@@ -17,7 +17,7 @@ class Piratemark
         System.init();
 
         // Load up the compiled pack in the assets directory named "bootstrap"
-        var manifest = Manifest.build("bootstrap");
+        var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
         loader.get(onSuccess);
     }

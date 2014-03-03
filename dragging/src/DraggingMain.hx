@@ -17,7 +17,7 @@ class DraggingMain
     {
         System.init();
 
-        var loader = System.loadAssetPack(Manifest.build("bootstrap"));
+        var loader = System.loadAssetPack(Manifest.fromAssets("bootstrap"));
         // Add listeners
         loader.success.connect(onSuccess);
         loader.error.connect(function (message) {

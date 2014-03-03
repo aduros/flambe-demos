@@ -37,7 +37,7 @@ class PaintMain
         // Draw the brush texture when pressing the canvas
         var drawPoint = function (event :PointerEvent) {
             if (System.pointer.isDown()) {
-                canvas.graphics.drawImage(brushTexture,
+                canvas.graphics.drawTexture(brushTexture,
                     event.viewX - brushTexture.width/2, event.viewY - brushTexture.width/2);
             }
         };
@@ -127,7 +127,7 @@ class PaintMain
         System.init();
 
         // Load up the compiled pack in the assets directory named "bootstrap"
-        var manifest = Manifest.build("bootstrap");
+        var manifest = Manifest.fromAssets("bootstrap");
         var loader = System.loadAssetPack(manifest);
         loader.get(onSuccess);
     }

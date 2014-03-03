@@ -11,7 +11,7 @@ class ShooterMain
     {
         System.init();
 
-        var loader = System.loadAssetPack(Manifest.build("bootstrap"));
+        var loader = System.loadAssetPack(Manifest.fromAssets("bootstrap"));
         loader.success.connect(function (pack) {
             ShooterCtx.pack = pack;
             System.root.add(new Game());
