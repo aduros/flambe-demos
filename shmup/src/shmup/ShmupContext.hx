@@ -39,11 +39,11 @@ class ShmupContext
         this.lightFont = new Font(pack, "fonts/Light");
         this.darkFont = new Font(pack, "fonts/Dark");
 
-        this.lib = Library.fromFlipbooks({
+        this.lib = Library.fromFlipbooks([
             // An explosion animation from a 13x1 spritesheet
-            "explosion": new Flipbook(pack.getTexture("Explosion").split(13))
+            new Flipbook("explosion", pack.getTexture("Explosion").split(13))
                 .setDuration(0.5).setAnchor(20, 20),
-        });
+        ]);
     }
 
     public function enterHomeScene (animate :Bool = true)
