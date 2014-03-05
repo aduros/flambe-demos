@@ -1,5 +1,5 @@
 # Basic information about the game.
-name: Your Game
+name: Shmup Demo
 description: A short one-line description.
 
 # Information about the game developer.
@@ -8,12 +8,12 @@ developer:
   url: http://yourwebsite.com
 
 # The game's unique identifier.
-id: com.yourdomain.yourgame
+id: flambe.shmup
 
 # The game's version string.
 version: 1.0.0
 
-# The file relative to the src/ directory containing the game's entry point.
+# The main class name.
 main: shmup.Main
 
 # The platform to use when invoking `run` or `build` with no arguments.
