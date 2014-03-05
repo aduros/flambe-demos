@@ -20,7 +20,7 @@ main: HorsesMain
 default_platform: flash
 
 # The initial orientation and fullscreen state on mobile devices.
-orientation: portrait
+orientation: landscape
 fullscreen: true
 
 # Additional flags to pass to the Haxe compiler.
