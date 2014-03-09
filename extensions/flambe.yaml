@@ -38,55 +38,49 @@ android:
   # https://developer.android.com/guide/topics/manifest/manifest-intro.html
   AndroidManifest.xml: |
     <manifest android:installLocation="auto">
-        <application
-            android:name="com.burstly.plugins.TestFlightApplication"
-            android:debuggable="true">
+        <application>
+            <!-- For Playhaven -->
+            <activity android:name="com.playhaven.src.publishersdk.content.PHContentView" android:theme="@android:style/Theme.Dialog" android:windowSoftInputMode="adjustResize"></activity>
+            <activity android:name="com.playhaven.android.view.FullScreen"></activity>
 
-            <meta-data android:name="testflight-app-token" android:value="2cb80607-50c0-4f00-819a-e8f1851909b4" />   
-
-            <activity>
+            <!-- This is needed to receive Google Cloud Messaging intents from the system. -->
+            <receiver android:name="com.playhaven.android.push.PushReceiver">
                 <intent-filter>
-                    <action android:name="android.intent.action.MAIN"/>
-                    <category android:name="android.intent.category.LAUNCHER"/>
+                    <action android:name="android.intent.action.VIEW" />
+                    <category android:name="com.playhaven.android" />
                 </intent-filter>
+            </receiver>
+
+            <!-- This is needed to receive Google Cloud Messaging intents from the system. -->
+            <receiver android:name="com.playhaven.android.push.GCMBroadcastReceiver" android:permission="com.google.android.c2dm.permission.SEND" >
+                <intent-filter>
+                    <action android:name="com.google.android.c2dm.intent.RECEIVE" />
+                    <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+                    <category android:name="air.flambe.extensions" />
+                </intent-filter>
+            </receiver>
+
+            <!-- For Chartboost -->
+            <activity android:name="com.chartboost.sdk.CBDialogActivity"
+              android:configChanges="orientation|keyboard|keyboardHidden"
+              android:windowSoftInputMode="adjustResize"
+              android:theme="@android:style/Theme.Translucent"
+              android:launchMode="singleTop">
             </activity>
-
-            <!-- Begin Burstly Required Activities -->
-            <activity android:name="com.burstly.lib.component.networkcomponent.burstly.BurstlyFullscreenActivity"
-                    android:configChanges="keyboard|keyboardHidden|orientation"
-                    android:hardwareAccelerated="true"
-                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen" />
-
-            <activity android:name="com.google.ads.AdActivity"
-                    android:hardwareAccelerated="true"
-                    android:configChanges="keyboard|keyboardHidden|orientation|screenLayout|uiMode|screenSize|smallestScreenSize"/>
-
-            <activity android:name="com.greystripe.sdk.GSFullscreenActivity"
-                    android:hardwareAccelerated="true"
-                    android:configChanges="keyboard|keyboardHidden|orientation" />
-
-            <activity android:name="com.inmobi.androidsdk.IMBrowserActivity"
-                    android:hardwareAccelerated="true"
-                    android:configChanges="keyboardHidden|orientation|keyboard" />
-
-            <activity android:name="com.millennialmedia.android.MMActivity"
-                    android:hardwareAccelerated="true"
-                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                    android:configChanges="keyboardHidden|orientation|keyboard"/>
-
-            <activity android:name="com.millennialmedia.android.VideoPlayer"
-                    android:hardwareAccelerated="true"
-                    android:theme="@android:style/Theme.NoTitleBar.Fullscreen"
-                    android:configChanges="keyboardHidden|orientation|keyboard" />
-            <!-- End Burstly Required Activities -->
-
         </application>
 
-        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
         <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
+        <uses-permission android:name="android.permission.ACCESS_WIFI_STATE"/>
         <uses-permission android:name="android.permission.INTERNET"/>
         <uses-permission android:name="android.permission.READ_PHONE_STATE"/>
         <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+
+        <!-- For Playhaven -->
+        <permission android:name="air.flambe.extensions.permission.C2D_MESSAGE"
+            android:protectionLevel="signature" />
+        <uses-permission android:name="air.flambe.extensions.permission.C2D_MESSAGE" />
+        <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
+        <uses-permission android:name="android.permission.GET_ACCOUNTS" />
 
         <!-- Optional Burstly permissions -->
         <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
@@ -108,6 +102,19 @@ ios:
     </array>
     <key>UIPrerenderedIcon</key>
     <true/>
+
+  Entitlements.plist: |
+    <!-- For Playhaven -->
+    <key>application-identifier</key>
+    <string>[YOUR_FULL_BUNDLE_ID]</string>
+    <key>aps-environment</key>
+    <string>production</string>
+    <key>get-task-allow</key>
+    <false/>
+    <key>keychain-access-groups</key>
+    <array>
+    <string>[YOUR_FULL_BUNDLE_ID]</string>
+    </array>
 
 # Firefox App-specific configuration.
 firefox:
