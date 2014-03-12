@@ -1,6 +1,6 @@
 //
 // Flambe - Rapid game development
-// http://2dkit.com
+// https://github.com/aduros/flambe/blob/master/LICENSE.txt
 
 package shmup;
 
