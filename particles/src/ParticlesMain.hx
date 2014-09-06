@@ -42,7 +42,7 @@ class ParticlesMain
             moldIdx = idx;
 
             if (emitter != null) {
-                emitter.dispose(); // Destroy any previous emitter
+                emitter.owner.dispose(); // Destroy any previous emitter
             }
             emitter = molds[idx].createEmitter();
             System.root.addChild(new Entity().add(emitter));
